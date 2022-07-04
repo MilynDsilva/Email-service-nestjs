@@ -20,15 +20,13 @@ export class EmailService {
                 },
             });
 
-            const info = await transporter.sendMail({
+            await transporter.sendMail({
                 from: sendEmailDto.from,
                 to: sendEmailDto.recipient,
                 subject: sendEmailDto.subject,
                 text: undefined,
                 html: sendEmailDto.body,
             });
-            console.log("Message sent: %s", info.messageId);
-            console.log("Preview URL: %s", transport.getTestMessageUrl(info));
             return 'Success'
         } catch (error) {
             throw error
